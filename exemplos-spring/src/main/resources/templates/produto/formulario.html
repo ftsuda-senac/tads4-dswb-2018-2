@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <form th:action="@{/produto/salvar}" method="post" th:object="${produto}">
+            <input type="hidden" th:if="*{id != null}" th:field="*{id}" />
+            <div>
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" />
+            </div>
+            <div>
+                <label>Descrição</label>
+                <textarea th:field="*{descricao}"></textarea>
+            </div>
+            <div>
+                <label>Preço compra</label>
+                <input type="text" th:field="*{precoCompra}" />
+            </div>
+            <div>
+                <label>Preço venda</label>
+                <input type="text" th:field="*{precoVenda}" />
+            </div>
+            <div>
+                <label>Quantidade</label>
+                <input type="text" th:field="*{quantidade}" />
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+    </body>
+</html>

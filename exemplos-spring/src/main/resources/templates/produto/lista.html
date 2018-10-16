@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <div th:if="${msg != null}" th:text="${msg}">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nome</td>
+                        <td>Preço compra</td>
+                        <td>Preço venda</td>
+                        <td>Quantidade</td>
+                        <td>ACAO</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${produtos != null}" th:each="prod : ${produtos}">
+                        <td th:text="${prod.id}"></td>
+                        <td th:text="${prod.nome}"></td>
+                        <td th:text="${prod.precoCompra}"></td>
+                        <td th:text="${prod.precoVenda}"></td>
+                        <td th:text="${prod.quantidade}"></td>
+                        <td>
+                            <a th:href="@{/produto/{id}/editar(id=${prod.id})}">EDITAR</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a th:href="@{/produto/novo}">NOVO</a>
+        </div>
+    </body>
+</html>

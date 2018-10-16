@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>TADS DSW</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+        <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <main class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Cadastro de produtos</h1>
+                    <div>
+                        <form th:action="@{/produto/salvar}" method="post">
+			    <input type="hidden" th:if="*{id != null"} th:field="*{id}" />
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nome</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{nome}" />
+                                </div>
+				<div class="invalid-feedback">Erro</div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Descrição</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" th:field="*{descricao}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Preço compra</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{precoCompra}" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Preço venda</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{precoVenda}" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Quantidade</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{quantidade}" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Disponível</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" th:field="*{disponivel}" id="disponivel1" value="1" />
+                                        <label class="form-check-label" for="disponivel1">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" th:field="*{disponivel}" id="disponivel0" value="0" />
+                                        <label class="form-check-label" for="disponivel0">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Categoria</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="catA" value="A" />
+                                        <label class="form-check-label" for="catA">Categoria A</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="catB" value="B" />
+                                        <label class="form-check-label" for="catB">Categoria B</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="catC" value="C" />
+                                        <label class="form-check-label" for="catC">Categoria C</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

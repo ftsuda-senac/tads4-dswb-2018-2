@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 /**
  *
@@ -57,6 +58,9 @@ public class Produto implements Serializable {
             @JoinColumn(name = "id_categoria")
         })
     private Set<Categoria> categorias;
+    
+    @Transient
+    private Set<Integer> idsCategorias;
 
     public Long getId() {
         return id;
@@ -124,6 +128,14 @@ public class Produto implements Serializable {
 
     public Set<Categoria> getCategorias() {
         return categorias;
+    }
+
+    public Set<Integer> getIdsCategorias() {
+        return idsCategorias;
+    }
+
+    public void setIdsCategorias(Set<Integer> idsCategorias) {
+        this.idsCategorias = idsCategorias;
     }
 
     public void setCategorias(Set<Categoria> categorias) {

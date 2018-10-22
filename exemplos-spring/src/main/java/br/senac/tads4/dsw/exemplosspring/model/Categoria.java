@@ -14,12 +14,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author fernando.tsuda
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Categoria.findAll", 
+            query = "SELECT c FROM Categoria c"),
+    @NamedQuery(name = "Categoria.findById",
+            query = "SELECT c FROM Categoria c WHERE c.id = :idCat")
+})
 public class Categoria implements Serializable {
 
     @Id

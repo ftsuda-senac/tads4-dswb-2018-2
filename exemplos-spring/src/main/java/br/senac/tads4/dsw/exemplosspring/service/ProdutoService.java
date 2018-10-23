@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface ProdutoService {
     
+    long count();
+    
     List<Produto> findAll(int offset, int quantity);
     
     Produto findById(long idProduto);

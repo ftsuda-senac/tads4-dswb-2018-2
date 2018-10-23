@@ -22,6 +22,14 @@ public class ProdutoServiceJPA implements ProdutoService {
 
     @PersistenceContext
     private EntityManager entityManager;
+    
+    @Override
+    public long count() {
+        Query queryJPQL = 
+                entityManager.createQuery("SELECT count(p) FROM Produto p");
+        Long qtd = (Long) queryJPQL.getSingleResult();
+        return qtd != null ? qtd : 0L;
+    }
 
     @Override
     public List<Produto> findAll(int offset, int quantity) {

@@ -43,9 +43,11 @@ public class ProdutoController {
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "quantidade", defaultValue = "100") int quantidade
             ) {
+        long qtd = produtoService.count();
         List<Produto> produtos = produtoService.findAll(offset, quantidade);
         return new ModelAndView("produto/lista-bs4")
-                .addObject("produtos", produtos);
+                .addObject("produtos", produtos)
+                .addObject("qtd", qtd);
     }
 
     @GetMapping("/novo")

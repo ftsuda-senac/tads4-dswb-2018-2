@@ -9,7 +9,6 @@ import br.senac.tads4.dsw.exemplosspring.model.Categoria;
 import br.senac.tads4.dsw.exemplosspring.model.Produto;
 import br.senac.tads4.dsw.exemplosspring.service.CategoriaService;
 import br.senac.tads4.dsw.exemplosspring.service.ProdutoService;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;

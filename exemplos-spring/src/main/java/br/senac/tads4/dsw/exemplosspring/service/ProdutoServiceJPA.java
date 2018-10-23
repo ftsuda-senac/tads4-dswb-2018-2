@@ -36,6 +36,9 @@ public class ProdutoServiceJPA implements ProdutoService {
         Query queryJPQL = 
                 entityManager.createQuery(
                         "SELECT p FROM Produto p WHERE p.id = :idProd");
+        String queryComJoin = "SELECT p FROM Produto p"
+                + " LEFT JOIN FETCH p.categorias "
+                + " WHERE p.id = :idProd";
         queryJPQL.setParameter("idProd", idProduto);
         Produto resultado = (Produto) queryJPQL.getSingleResult();
         return resultado;

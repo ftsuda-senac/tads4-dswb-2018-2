@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +45,17 @@ public class ProdutoController {
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "quantidade", defaultValue = "100") int quantidade
             ) {
-        List<Produto> produtos = produtoService.findAll(offset, quantidade);
+        //List<Produto> produtos = produtoService.findAll(offset, quantidade);
+        List<Produto> produtos = produtoService.findAll();
+        return new ModelAndView("produto/lista-bs4")
+                .addObject("produtos", produtos);
+    }
+    @GetMapping("/por-nome")
+    public ModelAndView listar2(
+            @RequestParam(name = "nome") String nome
+            ) {
+        //List<Produto> produtos = produtoService.findAll(offset, quantidade);
+        List<Produto> produtos = produtoService.findByNome(nome);
         return new ModelAndView("produto/lista-bs4")
                 .addObject("produtos", produtos);
     }
@@ -57,7 +68,8 @@ public class ProdutoController {
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable("id") Long id) {
-        Produto produto = produtoService.findById(id);
+        Optional<Produto> optProduto = produtoService.findById(id);
+        Produto produto = optProduto.get();
         if (produto.getCategorias() != null && 
                 !produto.getCategorias().isEmpty()) {
             
@@ -78,7 +90,8 @@ public class ProdutoController {
                 !produto.getIdsCategorias().isEmpty()) {
             Set<Categoria> categoriasSelecionadas = new HashSet<>();
             for (Integer idCat : produto.getIdsCategorias()) {
-                Categoria cat = categoriaService.findById(idCat);
+                Optional<Categoria> optCat = categoriaService.findById(idCat);
+                Categoria cat = optCat.get();
                 cat.setProdutos(new HashSet<Produto>(Arrays.asList(produto)));
                 categoriasSelecionadas.add(cat);
             }

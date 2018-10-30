@@ -5,6 +5,7 @@
  */
 package br.senac.tads4.dsw.exemplosspring.model;
 
+import br.senac.tads4.dsw.exemplosspring.SecurityConfig;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -57,7 +58,8 @@ public class UsuarioSistema implements UserDetails {
     }
     
     public void setSenha(String senhaAberta) {
-        this.hashSenha = senhaAberta;
+        this.hashSenha = 
+                SecurityConfig.bcryptPasswordEncoder().encode(senhaAberta);
     }
 
     public List<Papel> getPapeis() {

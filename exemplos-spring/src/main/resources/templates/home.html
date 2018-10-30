@@ -1,16 +1,17 @@
 <div layout:decorate="~{modelo-security}" layout:fragment="conteudo">
     <h1>Home</h1>
-    <h2>Nome completo do usuário: <span th:text="${usuario.nomeCompleto}"></span></h2>
-    <p th:text="${usuario.hashSenha}"></p>
+    <h2>Nome completo do usuário: <span sec:authentication="principal.nomeCompleto"></span></h2>
+    <p sec:authentication="principal.hashSenha"></p>
+    <p><a th:href="@{/logout}">Logout</a></p>
     <h3>Opções</h3>
     <ul>
-        <li>
+        <li sec:authorize="hasRole('ROLE_PEAO')">
             <a th:href="@{/protegido/peao}">Acessar /protegido/peao</a>
         </li>
-        <li>
+        <li sec:authorize="hasRole('ROLE_FODON')">
             <a th:href="@{/protegido/fodon}">Acessar /protegido/fodon</a>
         </li>
-        <li>
+        <li sec:authorize="hasRole('ROLE_GOD')">
             <a th:href="@{/protegido/god}">Acessar /protegido/god</a>
         </li>
     </ul>

@@ -1,4 +1,7 @@
 <div layout:decorate="~{modelo-security}" layout:fragment="conteudo">
+    <h2>Nome completo do usuário: <span sec:authentication="principal.nomeCompleto"></span></h2>
+    <p sec:authentication="principal.hashSenha"></p>
+    <p><a th:href="@{/logout}">Logout</a></p>
     <h1 th:text="${titulo}"></h1>
     <h2 th:text="${msg}"></h2>
 </div>

@@ -25,8 +25,7 @@ public class HomeController {
     // Obtido em https://www.baeldung.com/get-user-in-spring-security
     public ModelAndView mostrarHome(Authentication authentication) {
         UsuarioSistema usuario = (UsuarioSistema) authentication.getPrincipal();
-        return new ModelAndView("home")
-                .addObject("usuario", usuario);
+        return new ModelAndView("home");
     }
 
 }

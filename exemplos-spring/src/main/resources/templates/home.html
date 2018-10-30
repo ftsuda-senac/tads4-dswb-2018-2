@@ -1,0 +1,16 @@
+<div layout:decorate="~{modelo-security}" layout:fragment="conteudo">
+    <h1>Home</h1>
+    <h2>Nome completo do usuário: <span></span></h2>
+    <h3>Opções</h3>
+    <ul>
+        <li>
+            <a th:href="@{/protegido/peao}">Acessar /protegido/peao</a>
+        </li>
+        <li>
+            <a th:href="@{/protegido/fodon}">Acessar /protegido/fodon</a>
+        </li>
+        <li>
+            <a th:href="@{/protegido/god}">Acessar /protegido/god</a>
+        </li>
+    </ul>
+</div>

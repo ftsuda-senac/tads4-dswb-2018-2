@@ -53,7 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login") // DEFINE QUE A TELA TEM Q SER IMPLEMENTADA
                     .usernameParameter("username")
                     .passwordParameter("senha")
-                    .defaultSuccessUrl("/home").permitAll();
+                    .defaultSuccessUrl("/home").permitAll()
+            .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true).deleteCookies("JSESSIONID");
                 
 
     }

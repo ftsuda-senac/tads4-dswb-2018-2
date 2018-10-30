@@ -1,6 +1,7 @@
 <div layout:decorate="~{modelo-security}" layout:fragment="conteudo">
     <h1>Home</h1>
-    <h2>Nome completo do usuário: <span></span></h2>
+    <h2>Nome completo do usuário: <span th:text="${usuario.nomeCompleto}"></span></h2>
+    <p th:text="${usuario.hashSenha}"></p>
     <h3>Opções</h3>
     <ul>
         <li>
